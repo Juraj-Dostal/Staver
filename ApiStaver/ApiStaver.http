@@ -1,0 +1,6 @@
+@ApiStaver_HostAddress = http://localhost:5007
+
+GET {{ApiStaver_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

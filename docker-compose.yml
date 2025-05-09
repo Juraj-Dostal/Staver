@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  apistaver:
+    container_name: staver_api
+    image: ${DOCKER_REGISTRY-}apistaver
+    build:
+      context: .
+      dockerfile: ApiStaver/Dockerfile
+    environment:    
+      - ConnectionStrings__DefaultConnection=Server=database,1433;Database=StaverDb;User Id=sa;Password=SilneHeslo123!;MultipleActiveResultSets=true;TrustServerCertificate=true
+    ports:
+      - "8071:8081"
+      - "8070:8080"
+    depends_on:
+      - database
+ 
+  clientstaver:
+    container_name: staver_client
+    image: ${DOCKER_REGISTRY-}clientstaver
+    build:
+      context: .
+      dockerfile: ClientStaver/Dockerfile
+    ports:
+      - "8051:8081"
+      - "8050:8080" 
+
+  database:
+    container_name: staver_mssql
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "SilneHeslo123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433" 
+    volumes:
+      - db-data:/var/lib/staver_db
+
+volumes:
+  db-data:
+  

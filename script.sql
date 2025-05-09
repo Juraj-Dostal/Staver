@@ -1,0 +1,116 @@
+CREATE TABLE ComputerStat (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    DateTime DATETIME NOT NULL,
+    CpuUsage FLOAT NOT NULL,
+    RamUsage FLOAT NOT NULL,
+    DiskUsage FLOAT NOT NULL,
+    Temperature FLOAT NOT NULL
+);
+
+CREATE TABLE BitcoinStat (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    BlockNumber INT NOT NULL,
+    InPeer INT NOT NULL,
+    OutPeer INT NOT NULL,
+    Difficulty FlOAT NULL
+);
+
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 08:08:49.397', 2.5, 19.100000000000001, 42.399999999999999, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 08:38:50.543', 0.80000000000000004, 19.899999999999999, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 09:08:51.700', 1.8, 20.100000000000001, 42.5, 33.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 09:38:52.883', 1.8, 19.800000000000001, 42.5, 36.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 10:08:54.047', 28.300000000000001, 21.600000000000001, 42.5, 51.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 10:38:55.400', 0.80000000000000004, 19.0, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 11:08:56.697', 2.5, 18.899999999999999, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 11:38:57.983', 96.200000000000003, 20.100000000000001, 42.5, 69.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 12:08:59.363', 2.0, 17.699999999999999, 42.5, 35.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 12:39:00.653', 2.7999999999999998, 18.899999999999999, 42.5, 35.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 13:09:01.917', 3.5, 18.899999999999999, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 13:39:03.190', 16.5, 18.800000000000001, 42.5, 36.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 14:09:04.497', 2.7999999999999998, 18.800000000000001, 42.5, 32.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 14:39:05.963', 1.5, 18.800000000000001, 42.5, 33.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 15:09:07.390', 1.0, 18.899999999999999, 42.5, 33.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 15:39:08.673', 6.7999999999999998, 18.899999999999999, 42.5, 42.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 16:09:10.027', 1.3, 18.899999999999999, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 16:39:11.443', 91.700000000000003, 20.899999999999999, 42.5, 68.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 17:09:12.807', 90.900000000000006, 19.399999999999999, 42.5, 68.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 17:39:14.273', 0.80000000000000004, 17.100000000000001, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 18:09:15.720', 12.199999999999999, 17.199999999999999, 42.5, 34.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 18:39:17.157', 1.5, 17.199999999999999, 42.5, 32.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 19:09:18.543', 3.7999999999999998, 17.100000000000001, 42.5, 33.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 19:39:19.830', 4.0999999999999996, 17.199999999999999, 42.5, 35.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 20:09:21.107', 15.300000000000001, 17.300000000000001, 42.5, 42.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 20:39:22.363', 1.5, 18.600000000000001, 42.5, 32.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 08:57:11.873', 0.69999999999999996, 15.5, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 09:27:13.183', 1.6000000000000001, 15.4, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 09:57:14.597', 0.80000000000000004, 15.4, 44.0, 32.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 10:27:15.957', 1.0, 15.300000000000001, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 10:57:17.300', 1.0, 15.800000000000001, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 11:27:18.740', 1.3, 15.800000000000001, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 11:57:19.970', 2.1000000000000001, 15.9, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 12:27:21.253', 1.1000000000000001, 15.800000000000001, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 12:57:22.343', 3.2999999999999998, 15.800000000000001, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 13:27:23.407', 0.80000000000000004, 15.699999999999999, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 13:57:24.800', 3.7999999999999998, 15.6, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 14:27:26.080', 0.5, 15.6, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 14:57:27.433', 0.5, 16.0, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 15:27:28.897', 0.80000000000000004, 16.0, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 15:57:30.337', 1.3999999999999999, 16.0, 44.0, 31.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 16:27:31.643', 2.3999999999999999, 16.100000000000001, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 16:57:33.057', 0.40000000000000002, 15.699999999999999, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 17:27:34.433', 0.90000000000000002, 15.699999999999999, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 17:57:35.843', 0.59999999999999998, 15.699999999999999, 44.0, 28.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 18:27:37.300', 1.0, 15.800000000000001, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 18:57:38.563', 0.59999999999999998, 15.800000000000001, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 19:27:39.987', 0.40000000000000002, 15.699999999999999, 44.0, 29.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 19:57:41.413', 0.40000000000000002, 15.800000000000001, 44.0, 30.0);
+INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2025-05-06 20:27:42.787', 0.90000000000000002, 15.699999999999999, 44.0, 29.0);
+
+INSERT INTO BitcoinStat VALUES (862226, 21, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862228, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862230, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862232, 21, 11, NULL);
+INSERT INTO BitcoinStat VALUES (862237, 21, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862239, 20, 11, NULL);
+INSERT INTO BitcoinStat VALUES (862241, 21, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862244, 19, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862246, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862250, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862251, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862252, 24, 11, NULL);
+INSERT INTO BitcoinStat VALUES (862253, 23, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862257, 19, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862259, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862263, 19, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862266, 22, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862270, 21, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862272, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862275, 21, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862280, 22, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862284, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862289, 20, 10, NULL);
+INSERT INTO BitcoinStat VALUES (862290, 23, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895496, 12, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895497, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895503, 12, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895505, 14, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895509, 15, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895512, 17, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895513, 15, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895515, 15, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895519, 16, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895520, 16, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895523, 12, 11, NULL);
+INSERT INTO BitcoinStat VALUES (895527, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895532, 12, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895535, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895537, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895538, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895539, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895542, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895544, 13, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895545, 14, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895551, 14, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895554, 14, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895555, 10, 10, NULL);
+INSERT INTO BitcoinStat VALUES (895561, 9, 10, NULL);
