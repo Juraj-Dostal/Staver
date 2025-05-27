@@ -1,0 +1,52 @@
+﻿@* @model IEnumerable<ClientStaver.Models.TempHumSensor>*@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Home data</h1>
+
+<nav class ="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3" >
+    <div class="collumn col-1 container-fluid navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            @foreach (var room in Enum.GetValues(typeof(Location)))
+            {
+                <li class="list-group-item list-inline-item list-group-item-dark"><a asp-action="DetailsHome" asp-route-room="@room">@room.ToString()</a></li>
+            }
+        </ul>
+    </div>
+    <div class="col-2">
+        <a asp-action="Create">Create new</a>
+    </div>
+</nav>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewData["sensorData"] != null) 
+            {
+                foreach (var data in (IEnumerable<ClientStaver.Models.TempHumSensor>)ViewData["sensorData"])
+                {
+                    <tr>
+                        <td>@data.DateTime.Date</td>
+                        <td>@data.DateTime.TimeOfDay.ToString()</td>
+                        <td>@data.Temperature °C</td>
+                        <td>@data.Humidity %</td>
+                        <td>@data.Location</td>
+                        <td><a asp-action="Edit" asp-route-id="@data.Id">Edit</a></td>
+                        <td><a asp-action="Delete" asp-route-id="@data.Id">Delete</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

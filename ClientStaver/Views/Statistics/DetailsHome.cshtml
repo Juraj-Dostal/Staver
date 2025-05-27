@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ClientStaver.Models.TempHumSensor>
+
+
+<h1>@ViewData["Title"]</h1>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container-fluid navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            @foreach (var room in Enum.GetValues(typeof(Location)))
+            {
+                <li class="list-group-item list-inline-item list-group-item-dark"><a asp-action="DetailsHome" asp-route-room="@room" )">@room.ToString()</a></li>
+            }
+        </ul>
+    </div>
+</nav>
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>@Html.DisplayNameFor(model => model.Temperature)</th>
+                <th>@Html.DisplayNameFor(model => model.Humidity)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DateTime.Date</td>
+                    <td>@item.DateTime.TimeOfDay</td>
+                    <td>@Html.DisplayFor(modelItem => item.Temperature)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Humidity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

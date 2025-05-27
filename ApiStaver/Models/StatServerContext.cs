@@ -10,6 +10,7 @@ namespace ApiStaver.Models
 
         public DbSet<ComputerStat> ComputerStats { get; set; } = null!;
         public DbSet<BitcoinStat> BitcoinStats { get; set; } = null!;
+        public DbSet<TempHumSensor> TempHumSensors { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,6 +18,7 @@ namespace ApiStaver.Models
 
             modelBuilder.Entity<ComputerStat>().ToTable("ComputerStat");
             modelBuilder.Entity<BitcoinStat>().ToTable("BitcoinStat");
+            modelBuilder.Entity<TempHumSensor>().ToTable("TempHumSensor");
         }
     }
 }

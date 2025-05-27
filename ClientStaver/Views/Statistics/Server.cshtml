@@ -1,0 +1,161 @@
+﻿@model ServerStatsView
+
+@{
+    ViewData["Title"] = "Server";
+}
+
+<h1>Computer statistics</h1>
+
+<p>Welcome to the Stat Server page. Here you can view statistics of dell server.</p>
+
+<style>
+    table {
+        border-collapse: collapse;
+        
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #353535;
+    }
+
+    tr:nth-child(even) {
+        background-color: #101010;
+    }
+
+    tr:hover {
+        background-color: #000;
+    }
+</style>
+
+@{
+    var computerStats = (IEnumerable<ClientStaver.Models.ComputerStat>)Model.ComputerStats;
+
+    var labels = computerStats.Select(cs => cs.DateTime); // Popisky osy X
+    var values = computerStats.Select(cs => cs.Temperature); // Hodnoty osy Y
+}
+
+<div style="display: flex">
+    <div style="flex: 1; padding: 10px; width: 50%;">
+        <canvas id="myChart" width="200" height="100"></canvas>
+
+        <script>
+
+            // Inicializace grafu
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line', // Typ grafu (bar, line, pie, atd.)
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.ComputerStats.Select(cs => cs.DateTime.ToString()))), // Popisky osy X
+                    datasets: [
+                        {
+                            label: 'Temperature',
+                            data: @Html.Raw(Json.Serialize(Model.ComputerStats.Select(cs => cs.Temperature))), // Hodnoty osy Y
+                            backgroundColor: 'rgba(6, 26, 64, 0.2)',
+                            borderColor: 'rgba(6, 26, 64, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'CPU Usage',
+                            data: @Html.Raw(Json.Serialize(Model.ComputerStats.Select(cs => cs.CpuUsage))), // Hodnoty osy Y
+                            backgroundColor: 'rgba(3, 83, 164, 0.2)',
+                            borderColor: 'rgba(3, 83, 164, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'RAM Usage',
+                            data: @Html.Raw(Json.Serialize(Model.ComputerStats.Select(cs => cs.RamUsage))), // Hodnoty osy Y
+                            backgroundColor: 'rgba(0, 109, 170, 0.2)',
+                            borderColor: 'rgba(0, 109, 170, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Disk Usage',
+                            data: @Html.Raw(Json.Serialize(Model.ComputerStats.Select(cs => cs.DiskUsage))), // Hodnoty osy Y
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#fff', // Změna barvy popisků osy X
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#fff', // Změna barvy popisků osy X
+                            }
+                        },
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff' // farba textu legendy
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <table>
+            <thead>
+                <tr>
+                    @* <th>ID</th> *@
+                    <th>DateTime</th>
+                    <th>CPU Usage</th>
+                    <th>RAM Usage</th>
+                    <th>Disk Usage</th>
+                    <th>Temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stat in Model.ComputerStats)
+                {
+                    <tr>
+                        
+                        <td>@stat.DateTime</td>
+                        <td>@stat.CpuUsage</td>
+                        <td>@stat.RamUsage</td>
+                        <td>@stat.DiskUsage</td>
+                        <td>@stat.Temperature</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div style="flex: 1; padding: 10px;">
+        <table>
+            <thead>
+                <tr>
+                    @* <th>ID</th> *@
+                    <th>Block Number</th>
+                    <th>In Peer</th>
+                    <th>Out Peer</th>
+                    @* <th>Difficulty</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stat in Model.BitcoinStats)
+                {
+                    <tr>
+                      
+                        <td>@stat.BlockNumber</td>
+                        <td>@stat.InPeer</td>
+                        <td>@stat.OutPeer</td>
+                    </tr>
+                }
+        </table>
+    </div>
+
+</div>

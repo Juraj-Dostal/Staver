@@ -12,20 +12,102 @@ namespace ClientStaver.Controllers
             _apiService = apiService;
         }
 
-        // GET: URL:/Statistics/Index
-        public async Task<IActionResult> Statistics()
+        // GET: URL:/Statistics/Statistics
+        public async Task<IActionResult> Server()
         {
-            var data = await _apiService.GetComputerStatsAsync();
+            var computerStats = await _apiService.GetComputerStatsAsync();
+            var bitcoinStats = await _apiService.GetBitcoinStatsAsync();
+
+            var data = new ServerStatsView
+            {
+                ComputerStats = computerStats,
+                BitcoinStats = bitcoinStats
+            };
+
             return View(data);
         }
 
-        public IActionResult Welcome(string name, int numspace=1)
+        // GET: URL:/Statistics/Home
+        public async Task<IActionResult> Home()
         {
-            ViewData["Message"] = "Hello " + name;
-            ViewData["NumTimes"] = numspace;
+            var data = await _apiService.GetTempHumSensorsAsync();
+
+            ViewData["sensorData"] = data;
+
             return View();
         }
 
-        
+        public async Task<IActionResult> DetailsHome(string room)
+        {
+
+            var data = await _apiService.GetTempHumSensorsAsync(room);
+            if (data == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Title"] = room;
+
+            return View(data);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var data = await _apiService.GetTempHumSensorAsync(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+
+            return View(data);
+        }
+
+        public async Task<IActionResult> CreateSensor(TempHumSensor sensor)
+        {
+            var response = await _apiService.PostTempHumSensorAsync(sensor);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
+        public async Task<IActionResult> EditSensor(TempHumSensor sensor)
+        {
+            var response = await _apiService.PutTempHumSensorAsync(sensor);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _apiService.DeleteTempHumSensorAsync(id);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
+
     }
 }

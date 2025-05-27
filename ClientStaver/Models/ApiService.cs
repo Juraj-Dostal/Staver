@@ -12,7 +12,7 @@
 
         public async Task<List<ComputerStat>> GetComputerStatsAsync()
         {
-            var response = await _httpClient.GetAsync("http://apistaver:8070/api/ComputerStat");
+            var response = await _httpClient.GetAsync("api/ComputerStat");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<List<ComputerStat>>();
@@ -22,7 +22,7 @@
 
         public async Task<List<BitcoinStat>> GetBitcoinStatsAsync()
         {
-            var response = await _httpClient.GetAsync("http://apistaver:8070/api/BitcoinStat");
+            var response = await _httpClient.GetAsync("api/BitcoinStat");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<List<BitcoinStat>>();
@@ -30,5 +30,55 @@
             return new List<BitcoinStat>();
         }
 
+        public async Task<List<TempHumSensor>> GetTempHumSensorsAsync()
+        {
+            var response = await _httpClient.GetAsync("api/TempHumSensor");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<List<TempHumSensor>>();
+            }
+            return new List<TempHumSensor>();
+        }
+
+        public async Task<List<TempHumSensor>> GetTempHumSensorsAsync(string location)
+        {
+            var response = await _httpClient.GetAsync($"api/TempHumSensor/location/{location}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<List<TempHumSensor>>();
+            }
+            return new List<TempHumSensor>();
+        }
+
+        public async Task<TempHumSensor> GetTempHumSensorAsync(int id)
+        {
+            var response = await _httpClient.GetAsync($"api/TempHumSensor/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<TempHumSensor>();
+            }
+            return null;
+        }
+
+        public async Task<HttpResponseMessage> PostTempHumSensorAsync(TempHumSensor data)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/TempHumSensor", data);
+            
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> PutTempHumSensorAsync(TempHumSensor data)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/TempHumSensor/{data.Id}", data);
+
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> DeleteTempHumSensorAsync(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/TempHumSensor/{id}");
+
+            return response;
+        }
     }
 }

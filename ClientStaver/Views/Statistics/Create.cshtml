@@ -1,0 +1,39 @@
+﻿@model ClientStaver.Models.TempHumSensor
+
+@{
+    ViewData["Title"] = "Create Sensor Data";
+}
+<h4>@ViewData["Title"]</h4>
+
+<div class="col-md-4">
+    <form asp-action="CreateSensor" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Temperature" class="control-label"></label>
+            <input asp-for="Temperature" class="form-control" />
+            <span asp-validation-for="Temperature" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Humidity" class="control-label"></label>
+            <input asp-for="Humidity" class="form-control" />
+            <span asp-validation-for="Humidity" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Location" class="control-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateTime" class="control-label"></label>
+            <input asp-for="DateTime" class="form-control" />
+            <span asp-validation-for="DateTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Home">Back</a>
+</div> 

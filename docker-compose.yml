@@ -9,9 +9,13 @@ services:
       dockerfile: ApiStaver/Dockerfile
     environment:    
       - ConnectionStrings__DefaultConnection=Server=database,1433;Database=StaverDb;User Id=sa;Password=SilneHeslo123!;MultipleActiveResultSets=true;TrustServerCertificate=true
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
     ports:
       - "8071:8081"
       - "8070:8080"
+    networks:
+      - staver_network
     depends_on:
       - database
  
@@ -21,9 +25,14 @@ services:
     build:
       context: .
       dockerfile: ClientStaver/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - API_BASE_URL=http://apistaver:8080
     ports:
       - "8051:8081"
       - "8050:8080" 
+    networks:
+      - staver_network
 
   database:
     container_name: staver_mssql
@@ -33,9 +42,15 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433" 
+    networks:
+      - staver_network
     volumes:
-      - db-data:/var/lib/staver_db
-
-volumes:
-  db-data:
+      - mssql_data:/var/opt/mssql
+    restart: always
   
+volumes:
+  mssql_data:
+  
+networks:
+  staver_network:
+    driver: bridge

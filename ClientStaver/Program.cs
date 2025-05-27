@@ -11,7 +11,12 @@ namespace ClientStaver
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             // Vlastne
-            builder.Services.AddHttpClient<ApiService>();
+            builder.Services.AddHttpClient<ApiService>(client =>
+            {
+                var baseUrl = /*builder.Configuration["ApiSettings:BaseUrl"] ?? */Environment.GetEnvironmentVariable("API_BASE_URL");
+                client.BaseAddress = new Uri(baseUrl);
+            });
+
 
             var app = builder.Build();
 
