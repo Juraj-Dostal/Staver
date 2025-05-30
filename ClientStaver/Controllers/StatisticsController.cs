@@ -15,6 +15,8 @@ namespace ClientStaver.Controllers
         // GET: URL:/Statistics/Statistics
         public async Task<IActionResult> Server()
         {
+            //var token = HttpContext.Session.GetString("AccessToken");
+
             var computerStats = await _apiService.GetComputerStatsAsync();
             var bitcoinStats = await _apiService.GetBitcoinStatsAsync();
 

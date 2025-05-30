@@ -1,4 +1,5 @@
 ﻿using ApiStaver.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace ApiStaver.Controllers
 
         //Get : api/ComputerStat
         [HttpGet]
+        //[Authorize]
         public async Task<ActionResult<IEnumerable<ComputerStat>>> GetComputerStats()
         {
             if (_context.ComputerStats is null)

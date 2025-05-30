@@ -1,4 +1,6 @@
 using ClientStaver.Models;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClientStaver
 {
@@ -6,17 +8,35 @@ namespace ClientStaver
     {
         public static void Main(string[] args)
         {
+
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             // Vlastne
+            builder.Services.AddTransient<HttpClientHandler>(provider =>
+            {
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+                return handler;
+            });
+
             builder.Services.AddHttpClient<ApiService>(client =>
             {
                 var baseUrl = /*builder.Configuration["ApiSettings:BaseUrl"] ?? */Environment.GetEnvironmentVariable("API_BASE_URL");
                 client.BaseAddress = new Uri(baseUrl);
+            })
+            .ConfigurePrimaryHttpMessageHandler(provider =>
+            {
+                return provider.GetRequiredService<HttpClientHandler>();
             });
 
+            var keysFolder = new DirectoryInfo("/home/app/.aspnet/dataProtection-Keys/clientStaver");
+
+            builder.Services.AddDataProtection()
+                .PersistKeysToFileSystem(keysFolder)
+                .SetApplicationName("ClientStaver");
 
             var app = builder.Build();
 
@@ -30,7 +50,7 @@ namespace ClientStaver
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+           
             app.UseRouting();
 
             app.UseAuthorization();

@@ -1,4 +1,7 @@
-﻿namespace ClientStaver.Models
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ClientStaver.Models
 {
     public class ApiService
     {
@@ -8,6 +11,18 @@
         public ApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        public async Task<HttpResponseMessage> GetLoginTokenAsync(LoginRequest login)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/Auth/login", login);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var token = await response.Content.ReadFromJsonAsync<string>();
+                //_httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            }
+            return response;
         }
 
         public async Task<List<ComputerStat>> GetComputerStatsAsync()
