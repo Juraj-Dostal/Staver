@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace ClientStaver.Models
 {
@@ -19,14 +20,16 @@ namespace ClientStaver.Models
 
             if (response.IsSuccessStatusCode)
             {
-                var token = await response.Content.ReadFromJsonAsync<string>();
-                //_httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var token = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                Token.Value = token?.Token;
             }
             return response;
         }
 
         public async Task<List<ComputerStat>> GetComputerStatsAsync()
         {
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token.Value);
+
             var response = await _httpClient.GetAsync("api/ComputerStat");
             if (response.IsSuccessStatusCode)
             {
@@ -78,7 +81,7 @@ namespace ClientStaver.Models
         public async Task<HttpResponseMessage> PostTempHumSensorAsync(TempHumSensor data)
         {
             var response = await _httpClient.PostAsJsonAsync("api/TempHumSensor", data);
-            
+
             return response;
         }
 

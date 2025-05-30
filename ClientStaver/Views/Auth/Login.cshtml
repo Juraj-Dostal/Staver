@@ -6,9 +6,12 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>@ViewData["Unauthorization"]</p>
+@if (TempData["DeniedLogin"] != null)
+{
+    <p class="alert alert-danger">@TempData["DeniedLogin"]</p>
+}
 
-<form asp-action="LoginReguest" method="post">
+<form asp-action="LoginRequest" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Username">Username</label>
@@ -22,3 +25,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
+
+<div>
+    <a asp-action="Home">Back</a>
+</div> 

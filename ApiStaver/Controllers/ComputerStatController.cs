@@ -19,7 +19,7 @@ namespace ApiStaver.Controllers
 
         //Get : api/ComputerStat
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<ComputerStat>>> GetComputerStats()
         {
             if (_context.ComputerStats is null)

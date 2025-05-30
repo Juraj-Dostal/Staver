@@ -24,7 +24,7 @@ namespace ClientStaver
 
             builder.Services.AddHttpClient<ApiService>(client =>
             {
-                var baseUrl = /*builder.Configuration["ApiSettings:BaseUrl"] ?? */Environment.GetEnvironmentVariable("API_BASE_URL");
+                var baseUrl = builder.Configuration["ApiSettings:BaseUrl"] ?? Environment.GetEnvironmentVariable("API_BASE_URL");
                 client.BaseAddress = new Uri(baseUrl);
             })
             .ConfigurePrimaryHttpMessageHandler(provider =>

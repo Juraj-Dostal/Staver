@@ -23,10 +23,11 @@ namespace ClientStaver.Controllers
 
             if (!response.IsSuccessStatusCode)
             {
-                ViewData["Unauthorization"] = "Invalid username or password.";
-                return View();
+                TempData["DeniedLogin"] = "Invalid username or password.";
+                return RedirectToAction("Login");
             }
-            return RedirectToAction("Home");
+            TempData["Successlogin"] = "Login successful.";
+            return RedirectToAction("Index", "Home" );
         }
 
     }
