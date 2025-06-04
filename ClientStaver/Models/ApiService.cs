@@ -26,6 +26,13 @@ namespace ClientStaver.Models
             return response;
         }
 
+        
+        public async Task<HttpResponseMessage> CreateUserAsync(UserRequest user)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/Auth/register", user);
+            return response;
+        }
+
         public async Task<List<ComputerStat>> GetComputerStatsAsync()
         {
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token.Value);

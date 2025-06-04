@@ -1,0 +1,49 @@
+﻿CREATE TABLE ComputerStat (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    DateTime DATETIME NOT NULL,
+    CpuUsage FLOAT NOT NULL,
+    RamUsage FLOAT NOT NULL,
+    DiskUsage FLOAT NOT NULL,
+    Temperature FLOAT NOT NULL
+);
+GO
+
+CREATE TABLE BitcoinStat (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    BlockNumber INT NOT NULL,
+    InPeer INT NOT NULL,
+    OutPeer INT NOT NULL,
+    Difficulty FlOAT NOT NULL
+);
+GO
+
+CREATE TABLE TempHumSensor (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Temperature FLOAT NOT NULL,
+    Humidity FLOAT NOT NULL,
+    DateTime DATETIME NOT NULL,
+    Location NVARCHAR(20) NOT NULL
+);
+GO
+
+CREATE TABLE Role (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    RoleName NVARCHAR(20) NOT NULL
+);
+GO
+
+CREATE TABLE [UserRole] (
+    UserId INT NOT NULL,
+    RoleId INT NOT NULL,
+    CONSTRAINT PK_UserRole PRIMARY KEY (UserId, RoleId),
+    CONSTRAINT FK_UsuerRole_User FOREIGN KEY (UserId) REFERENCES [User](Id) ON DELETE CASCADE,
+    CONSTRAINT FK_UsuerRole_Role FOREIGN KEY (RoleId) REFERENCES [Role](Id) ON DELETE CASCADE,
+);
+GO
+
+CREATE TABLE [User] (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(20) NOT NULL,
+    Hashword BINARY(32) NOT NULL
+);
+GO
