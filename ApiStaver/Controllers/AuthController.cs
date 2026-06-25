@@ -45,7 +45,7 @@ namespace ApiStaver.Controllers
                 Roles = roles
             };
 
-            _context.User.Add(newUser);
+            _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
             return Ok(user);
@@ -90,7 +90,7 @@ namespace ApiStaver.Controllers
         private bool IsValidLogin(LoginRequest request)
         {
 
-            var user = _context.User.FirstOrDefault(u => u.Username == request.Username);
+            var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
             if (user == null)
             {
                 return false;

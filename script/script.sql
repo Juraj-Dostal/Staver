@@ -1,20 +1,3 @@
-CREATE TABLE ComputerStat (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    DateTime DATETIME NOT NULL,
-    CpuUsage FLOAT NOT NULL,
-    RamUsage FLOAT NOT NULL,
-    DiskUsage FLOAT NOT NULL,
-    Temperature FLOAT NOT NULL
-);
-
-CREATE TABLE BitcoinStat (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    BlockNumber INT NOT NULL,
-    InPeer INT NOT NULL,
-    OutPeer INT NOT NULL,
-    Difficulty FlOAT NULL
-);
-
 INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 08:08:49.397', 2.5, 19.100000000000001, 42.399999999999999, 34.0);
 INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 08:38:50.543', 0.80000000000000004, 19.899999999999999, 42.5, 34.0);
 INSERT INTO ComputerStat (DateTime, CpuUsage, RamUsage, DiskUsage, Temperature) VALUES ('2024-09-21 09:08:51.700', 1.8, 20.100000000000001, 42.5, 33.0);

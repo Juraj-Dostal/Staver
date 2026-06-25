@@ -33,7 +33,7 @@ namespace ClientStaver.Controllers
 
         public async Task<IActionResult> SignupRequest(Signup signup)
         {
-            if (signup == null)
+            if (signup.Username == null || signup.Password == null)
             {
                 TempData["Signup"] = "Signup data is required.";
                 return RedirectToAction("Signup");

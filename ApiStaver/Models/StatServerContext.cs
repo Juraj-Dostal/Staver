@@ -12,7 +12,7 @@ namespace ApiStaver.Models
         public DbSet<ComputerStat> ComputerStats { get; set; } = null!;
         public DbSet<BitcoinStat> BitcoinStats { get; set; } = null!;
         public DbSet<TempHumSensor> TempHumSensors { get; set; } = null!;
-        public DbSet<User> User { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
